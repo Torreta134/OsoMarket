@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "665184610333",
-    "project_id": "osornomarket",
-    "storage_bucket": "osornomarket.firebasestorage.app"
+    "project_number": "625807787749",
+    "project_id": "osomarket-cd2e1",
+    "storage_bucket": "osomarket-cd2e1.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:665184610333:android:f429a57f999ab9b038fef4",
+        "mobilesdk_app_id": "1:625807787749:android:4c69cf389791670bce760c",
         "android_client_info": {
           "package_name": "com.tuempresa.osornomarket"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAYoLamRuPpxj4HqCMSJJUV1Emdyk0ZHs4"
+          "current_key": "AIzaSyBHT5X7ylPoTkacyMX9BvwWRH-v7X93D-o"
         }
       ],
       "services": {

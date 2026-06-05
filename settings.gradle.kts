@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "OsornoMarket"
+rootProject.name = "OsoMarket"
 include(":app")
  

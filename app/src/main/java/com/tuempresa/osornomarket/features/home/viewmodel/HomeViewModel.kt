@@ -30,13 +30,55 @@ class HomeViewModel(
             _isLoading.value = true
             try {
                 val productList = repository.getAllProducts()
-                _products.value = productList
-                Log.d("HomeViewModel", "Productos cargados: ${productList.size}")
+                
+                // Buscamos si hay datos del mundial
+                val containsOldData = productList.any { it.name.contains("Lámina") || it.description.contains("Mundial") }
+                
+                if (productList.isEmpty() || containsOldData) {
+                    // Si hay datos viejos, primero borramos los que existen para que no se mezclen
+                    if (containsOldData) {
+                        productList.forEach { 
+                            if (it.name.contains("Lámina") || it.description.contains("Mundial")) {
+                                repository.deleteProduct(it.id)
+                            }
+                        }
+                    }
+                    seedDemoData()
+                } else {
+                    _products.value = productList
+                }
             } catch (e: Exception) {
                 Log.e("HomeViewModel", "Error al cargar productos", e)
             } finally {
                 _isLoading.value = false
             }
+        }
+    }
+
+    private fun seedDemoData() {
+        viewModelScope.launch {
+            val demoProducts = listOf(
+                Product(
+                    name = "iPhone 15 Pro",
+                    brand = "Apple",
+                    description = "Titanio natural, chip A17 Pro, 128GB.",
+                    price = 1200000,
+                    imageUrl = "https://images.unsplash.com/photo-1696446701796-da61225697cc?q=80&w=500",
+                    condition = "Nuevo"
+                ),
+                Product(
+                    name = "Zapatillas Nike Air Max",
+                    brand = "Nike",
+                    description = "Amortiguación clásica y comodidad extrema para el día a día.",
+                    price = 89990,
+                    imageUrl = "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500",
+                    condition = "Nuevo"
+                )
+            )
+            demoProducts.forEach { repository.addProduct(it) }
+            // Volver a cargar después de insertar
+            val updatedList = repository.getAllProducts()
+            _products.value = updatedList
         }
     }
 }

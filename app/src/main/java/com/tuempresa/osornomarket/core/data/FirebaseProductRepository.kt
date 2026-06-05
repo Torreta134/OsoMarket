@@ -6,23 +6,46 @@ import com.tuempresa.osornomarket.core.model.Product
 import com.tuempresa.osornomarket.core.repository.ProductRepository
 import kotlinx.coroutines.tasks.await
 
-/**
- * Implementación concreta del repositorio usando Firebase Firestore.
- * Cumple con el Principio de Responsabilidad Única (SRP) al manejar solo datos.
- */
 class FirebaseProductRepository : ProductRepository {
     
     private val db = Firebase.firestore
+    private val productsCollection = db.collection("products")
 
     override suspend fun getAllProducts(): List<Product> {
         return try {
-            val result = db.collection("products").get().await()
+            val result = productsCollection.get().await()
             result.documents.mapNotNull { document ->
                 document.toObject(Product::class.java)?.copy(id = document.id)
             }
         } catch (e: Exception) {
-            // Aquí podrías relanzar el error o registrarlo
             emptyList()
+        }
+    }
+
+    override suspend fun addProduct(product: Product): Boolean {
+        return try {
+            productsCollection.add(product).await()
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    override suspend fun updateProduct(product: Product): Boolean {
+        return try {
+            productsCollection.document(product.id).set(product).await()
+            true
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    override suspend fun deleteProduct(productId: String): Boolean {
+        return try {
+            productsCollection.document(productId).delete().await()
+            true
+        } catch (e: Exception) {
+            false
         }
     }
 }
