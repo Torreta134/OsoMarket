@@ -34,7 +34,7 @@ fun Application.module() {
     initDatabase()
 
     // Servicios
-    val tokenService = TokenService(environment.config)
+    val tokenService = TokenService(this.environment.config)
     val userRepository = UserRepository()
     val programRepository = ProgramRepository()
     
@@ -44,7 +44,7 @@ fun Application.module() {
     // Configuración de Autenticación JWT
     install(Authentication) {
         jwt("auth-jwt") {
-            realm = environment.config.property("jwt.realm").getString()
+            realm = this@module.environment.config.property("jwt.realm").getString()
             verifier(tokenService.getVerifier())
             validate { credential ->
                 if (credential.payload.getClaim("id").asInt() != null) {
@@ -62,10 +62,10 @@ fun Application.module() {
 }
 
 fun Application.initDatabase() {
-    val driverClassName = environment.config.property("storage.driverClassName").getString()
-    val jdbcURL = environment.config.property("storage.jdbcURL").getString()
-    val user = environment.config.property("storage.user").getString()
-    val password = environment.config.property("storage.password").getString()
+    val driverClassName = this.environment.config.property("storage.driverClassName").getString()
+    val jdbcURL = this.environment.config.property("storage.jdbcURL").getString()
+    val user = this.environment.config.property("storage.user").getString()
+    val password = this.environment.config.property("storage.password").getString()
 
     val hikariConfig = HikariConfig().apply {
         this.driverClassName = driverClassName
