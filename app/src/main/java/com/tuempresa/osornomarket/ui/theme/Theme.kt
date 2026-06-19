@@ -12,32 +12,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = OsoHoney,
+    secondary = OsoTan,
+    tertiary = OsoCream,
+    surface = OsoDarkBrown,
+    onSurface = OsoCream,
+    background = OsoDarkBrown,
+    onBackground = OsoCream
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = OsoMediumBrown,
+    secondary = OsoHoney,
+    tertiary = OsoDarkBrown,
+    surface = OsoCream,
+    onSurface = OsoDarkBrown,
+    background = OsoCream,
+    onBackground = OsoDarkBrown
 )
 
 @Composable
 fun OsornoMarketTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    // Desactivamos dynamicColor por defecto para mantener nuestra identidad de marca
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

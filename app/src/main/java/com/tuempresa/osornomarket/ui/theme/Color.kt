@@ -2,10 +2,18 @@ package com.tuempresa.osornomarket.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+// Paleta Oficial Mockup "OsoMarket"
+val OsoDarkBrown = Color(0xFF3D2314)    // Encabezado y botones
+val OsoMediumBrown = Color(0xFF7D5036)  // Banner
+val OsoCream = Color(0xFFF5F0E6)        // Fondo general
+val OsoTan = Color(0xFFEBD9C5)          // Tarjetas de categorías
+val OsoHoney = Color(0xFFC68642)        // Acentos/Miel
+val OsoWhite = Color(0xFFFFFFFF)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Esquema para el tema
+val BearBrownDark = OsoDarkBrown
+val BearBrown = OsoMediumBrown
+val BearHoney = OsoHoney
+val BearBeige = OsoTan
+val BearLightSurface = OsoCream
+val BearOnLightSurface = OsoDarkBrown

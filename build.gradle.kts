@@ -3,4 +3,7 @@ plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.google.gms.google.services) apply false
+    alias(libs.plugins.kotlinJvm) apply false
+    alias(libs.plugins.ktor) apply false
+    alias(libs.plugins.kotlinSerialization) apply false
 }

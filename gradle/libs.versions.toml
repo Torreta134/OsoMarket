@@ -7,7 +7,9 @@ espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.6.1"
 lifecycleViewModelCompose = "2.8.7"
 activityCompose = "1.8.0"
-kotlin = "2.2.10"
+kotlin = "2.1.0"
+ktor = "3.0.3"
+serialization = "1.7.3"
 composeBom = "2026.02.01"
 coil = "2.7.0"
 googleGmsGoogleServices = "4.4.4"
@@ -38,4 +40,7 @@ androidx-compose-material-icons-extended = { group = "androidx.compose.material"
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 

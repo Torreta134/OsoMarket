@@ -24,4 +24,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "OsoMarket"
 include(":app")
+include(":backend")
  
